@@ -1,6 +1,7 @@
-const express = require("express");
-const router = require('./routes/index');
-const run = require('./connect');
+import express from "express";
+import router from './routes/index';
+import run from './connect';
+import play from "./utils";
 
 const app = express(); // une instance d'express
 const hostname = "127.0.0.1";
@@ -14,11 +15,18 @@ app.use(express.static(__dirname + '/public'));
 
 // app.use(express.json()); 
 
-app.use("/yams", router);
+app.use(router);
 
 app.get("/", async (req, res) => {
-    const collection = await run();
+    // const collection = await run();
+    res.render('pages/index');
 })
+
+app.get("/play", (req, res) => {
+  play();
+  res.redirect("/");
+})
+
 
 
 app.listen(port, hostname, () => {

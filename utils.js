@@ -39,4 +39,4 @@ const play = () => {
     return result;
 }
 
-module.exports = play;
+export default play;

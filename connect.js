@@ -1,18 +1,22 @@
-const { MongoClient } = require("mongodb");
+import { MongoClient } from "mongodb";
+import config from "./config.js";
+const { DB_COLLECTION, DB_NAME, DB_URI } = config() ;
 
-const uri = "mongodb://localhost:27017";
-const dbName = "yams";
-const collectionName = "patries";
-
-const client = new MongoClient(uri, {
+export const client = new MongoClient(DB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
-const run = async () => {
+// pour optimiser la création de la collection si elle et déjà faite ce n'est plus à faire 
+// voir plus bas
+let collection = null;
+
+export const run = async () => {
   try {
-    connect = await client.connect();
-    collection = await client.db(dbName).collection(collectionName);
+    if(collection) return collection ;
+
+    const connect = await client.connect();
+    collection = await client.db(DB_NAME).collection(DB_COLLECTION);
     console.log("Connected successfully to server");
 
     return collection;
@@ -23,4 +27,3 @@ const run = async () => {
   }
 };
 
-module.exports = run ;
