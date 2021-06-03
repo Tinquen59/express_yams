@@ -16,31 +16,21 @@
     <%- include("../partials/header"); %>
 
     <div class="d-flex flex-column justify-content-center align-items-center w-100">
-        <h1 class="mb-5">Win your pastries</h1>
+        <h1 class="mb-5 results--title">Results</h1>
 
-        <div class="my-5 container__game">
-            <% if (infoGame.canPlay) { 
-                if (!infoGame.isStart) { %>
-                    <p>Click the Play button to play</p>
-                <% } else { 
-                    dices.forEach(dice => { %>
-                        <div class="de"><%= dice %></div>
-                    <% }) 
-                } 
-            } else { %>
-                <p>Sorry, all the pastries were won</p>    
-            <% } %>
+        <div class="my-5 container__results">
+            <% data.forEach(result => { 
+                if (result.patriesName.length) { %>
+                    <div class="my-5 card__container card--win">
+                        <%- include("../partials/card", { result: result }); %>
+                    </div>
+                <% } else { %>
+                    <div class="my-5 card__container card--loose">
+                        <%- include("../partials/card", { result: result }); %>
+                    </div>
+                <% }
+            }) %>
         </div>
-
-        <% if (infoGame.canPlay) { %>
-            <button class="btn mt-5 btn--play" type="button">
-                <a href="/play">Play</a>
-            </button>
-        <% } else { %>
-            <button class="btn mt-5 btn--play" type="button mt-5" disabled>
-                <a href="/">Play</a>
-            </button>
-        <% } %>
     </div>
     
 </body>

@@ -2,8 +2,7 @@
 
 import express from "express";
 import router from './routes/index';
-import run from './connect';
-import play from "./utils";
+import { play } from "./utils";
 
 const app = express(); // une instance d'express
 const hostname = "127.0.0.1";

@@ -1,3 +1,122 @@
-body {
-    background-color: #333;
+:root {
+    --main-bg-color: #333;
+    --main-text-color: #f7f3f3;
+    --size-dice: 50px;
+    --main-danger-color: rgba(162, 0, 0, .44);
+    --main-success-color: rgba(64, 162, 0, .44);
 }
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+}
+
+h1 {
+    font-size: 60px;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* header */
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 3em;
+    padding-right: 3em;
+    height: 80px;
+    background-color: var(--main-text-color);
+    box-shadow: 0 5px 2px var(--main-text-color);
+}
+
+header a {
+    font-family: 'Sacramento', cursive;
+    color: var(--main-bg-color);
+    font-size: 25px;
+    font-weight: bold;
+    font-style: italic;
+}
+/*  */
+
+
+/* homepage */
+.container__game {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    max-width: 500px;
+}
+
+.de {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--main-text-color);
+    width: var(--size-dice);
+    height: var(--size-dice);
+    line-height: 1em;
+    border-radius: 5px;
+    transform: scale(1.5);
+}
+
+.btn--play a {
+    background-color: var(--main-text-color);
+    color: var(--main-bg-color);
+    border: 2px solid var(--main-text-color);
+    border-radius: 20px;
+    padding: .6em 1.5em;
+    font-weight: bold;
+    font-size: 30px;
+    letter-spacing: 1px;
+    transition: all .2s ease-in-out;
+}
+.btn--play a:hover {
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+}
+/*  */
+
+
+/* results page */
+.results--title {
+    margin-top: 200px;
+}
+
+.container__results {
+    margin-top: 200px;
+    width: 80%;
+    max-width: 700px;
+}
+
+.card--win {
+    background-color: var(--main-success-color);
+    box-shadow: 0 0 10px var(--main-success-color);
+}
+
+.card--loose {
+    background-color: var(--main-danger-color);
+    box-shadow: 0 0 10px var(--main-danger-color);
+}
+
+.card__container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    border-radius: 50px;
+    color: var(--main-text-color);
+    padding: 2em;
+}
+/*  */

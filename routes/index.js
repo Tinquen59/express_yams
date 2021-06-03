@@ -3,13 +3,7 @@
 const express = require('express');
 const router = express.Router();
 
-import { indexController } from "../controllers/game";
-
-// middleware spécifique au router
-router.use( (req, res, next) => {
-  console.log('Time: ', Date.now());
-  next();
-});
+import { indexController, resultsController } from "../controllers/game";
 
 // define the home page route
 router.get('/', (req, res) =>{
@@ -18,7 +12,8 @@ router.get('/', (req, res) =>{
 });
 // define the about route
 router.get('/results', (req, res) => {
-  res.send('Your results');
+  resultsController(req, res);
+  // res.send('Your results');
 });
 
 export default router;

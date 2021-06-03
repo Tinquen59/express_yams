@@ -1,3 +1,11 @@
+export const canPlay = (collection) => {
+    for (const element of collection) {
+        if (element.number > 0) return true;
+    }
+    if (collection[collection.length - 1] === 0) return false;
+};
+
+
 // Génére un nbre aléatoire arrondi.
 const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min) + min);
 
@@ -26,7 +34,7 @@ const resultCombination = setArr => {
     return result[0].result ;
 }
 
-const play = () => {
+export const play = () => {
     let yamsCombination = [];
     const yamsCounter = 5;
     let min = 1;
@@ -41,5 +49,3 @@ const play = () => {
     const result = resultCombination(setYamsCombination); 
     return result;
 }
-
-export default play;

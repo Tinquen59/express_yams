@@ -1,0 +1,16 @@
+<div class="card__side">
+    <p>Didier</p>
+    <p>-------</p>
+</div>
+
+<div class="card__side">
+    <% if (result.isWin) { %>
+        <ul>
+            <% result.patriesName.forEach(patrieName => { %>
+                <li><%= patrieName %></li>
+            <% }) %>
+        </ul>
+    <% } else { %>
+        <p>Loose</p>
+    <% } %>
+</div>
