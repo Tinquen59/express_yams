@@ -1,9 +1,7 @@
 // Génére un nbre aléatoire arrondi.
-function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min) + min);
-}
+const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min) + min);
 
-function resultCombination(setArr) {
+const resultCombination = setArr => {
     let resultCombination = [
         {
             value: 1,
@@ -15,21 +13,26 @@ function resultCombination(setArr) {
         },
         {
             value: 3,
-            result: "Double Carré"
+            result: "Double paires"
         }
     ]
 
-    const result = resultCombination.filter((item) => item.value === setArr.size);
+    let result = [];
+    result = resultCombination.filter((item) => item.value === setArr.size);
+
+    if (result.length === 0) result.push( { result: "Loose" } );
+
     console.log('result :', result);
-    return result.length >= 0 ? result[0].result : '';
+    return result[0].result ;
 }
 
 const play = () => {
-    let yamsCombination = []
+    let yamsCombination = [];
+    const yamsCounter = 5;
     let min = 1;
     let max = 6;
   
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < yamsCounter; i++) {
       yamsCombination.push(getRandomInt(min, max))
     }
 

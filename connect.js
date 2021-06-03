@@ -1,3 +1,5 @@
+'use strict';
+
 import { MongoClient } from "mongodb";
 import config from "./config.js";
 const { DB_COLLECTION, DB_NAME, DB_URI } = config() ;

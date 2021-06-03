@@ -1,3 +1,5 @@
+'use strict';
+
 import express from "express";
 import router from './routes/index';
 import run from './connect';
@@ -17,15 +19,16 @@ app.use(express.static(__dirname + '/public'));
 
 app.use(router);
 
+app.get("/play", (req, res) => {
+  play();
+  res.redirect("/");
+})
+
 app.get("/", async (req, res) => {
     // const collection = await run();
     res.render('pages/index');
 })
 
-app.get("/play", (req, res) => {
-  play();
-  res.redirect("/");
-})
 
 
 
