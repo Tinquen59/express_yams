@@ -1,4 +1,4 @@
-import { winPatries, randomPatries } from './models/index';
+import { winPatries } from './models/index';
 
 export const canPlay = (collection) => {
     for (const element of collection) {
@@ -61,7 +61,7 @@ const resultCombination = async setArr => {
 
     if (message.numPatriesWin > 0) {
 
-        const returnPatries = await randomPatries(message.numPatriesWin);
+        const returnPatries = await winPatries(message.numPatriesWin);
         await returnPatries.forEach(doc => message.numPatriesWin > 0 ? message.namePatries.push(doc) : []);
 
         return message;
