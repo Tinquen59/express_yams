@@ -2,8 +2,8 @@
     --main-bg-color: #333;
     --main-text-color: #f7f3f3;
     --size-dice: 50px;
-    --main-danger-color: rgba(162, 0, 0, .44);
-    --main-success-color: rgba(64, 162, 0, .44);
+    --main-danger-color: rgba(162, 0, 0, .30);
+    --main-success-color: rgba(64, 162, 0, .30);
 }
 
 body {
