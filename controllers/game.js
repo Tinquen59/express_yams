@@ -9,7 +9,6 @@ export const indexController = (req, res) => {
 
     allPatries().then(
         collection => {
-            // console.log(collection);
             const infoGame = {
                 canPlay: canPlay(collection),
                 isStart: true // valeur à modifier (false par defaut)
@@ -19,8 +18,6 @@ export const indexController = (req, res) => {
 
             game.party.then((result) => {
                 
-                console.log('controller :', game.party);
-                
                 res.render("pages/index", { 
                     data : collection,
                     infoGame,
@@ -28,7 +25,7 @@ export const indexController = (req, res) => {
                     title: process.env.TITLE ?? "No Title",
                     combinationName: result.message.combinationName,
                     message: result.message.message, // message in utils.js
-                    patries: result.message.namePatries
+                    patries: result.message.namePatries ? result.message.namePatries : []
                 })
             });
         }

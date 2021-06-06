@@ -58,21 +58,13 @@ const resultCombination = async setArr => {
     }
 
     occurenceCheck(occurencesFilter);
-    //console.log('message.numPatriesWin :', message.numPatriesWin);
 
     if (message.numPatriesWin > 0) {
 
-        const returnPatries = await winPatries(message.numPatriesWin)
-            .then((res) => {
-                console.log('res winpatries :', ...res);
-                message.numPatriesWin > 0 ? message.namePatries.push(...res) : '';
-                return message;
-            })
-            .catch((error) => {
-                console.log('error return patries :', error);
-            });
-        
-        return returnPatries;
+        const returnPatries = await randomPatries(message.numPatriesWin);
+        await returnPatries.forEach(doc => message.numPatriesWin > 0 ? message.namePatries.push(doc) : []);
+
+        return message;
     } else {
         return message;
     }
@@ -88,9 +80,6 @@ export const play = async () => {
     for (let i = 0; i < yamsCounter; i++) {
       yamsCombination.push(getRandomInt(min, max))
     }
-
-    //console.log(await randomPatries());
-    //console.log(randomPatry);
 
     const resultAll = await resultCombination(yamsCombination).then((res) => {
         resultYams = {

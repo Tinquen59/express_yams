@@ -16,21 +16,20 @@ export const allResults = async () => {
 }
 
 
-// function qui retourne des patries pour les gagnants
+/**
+ * retourne des pastries aléatoirement
+ * @param {*} num nombre de pastries retourner
+ * @returns 
+ */
 export const winPatries = async (num) => {
-    const collection = await run("patries");
-    return collection.find({ }, { name : 1, number : 1, order : 1, _id : 0}).limit(num).toArray();
-}
-
-
-// function de test pour retourner une patries aleatoire
-export const randomPatries = async() => {
     const collection = await run("patries");
 
     return collection.aggregate([
-        { "$match": {"order": 5}}
+        { $sample: { size: num}}
     ]);
 }
+
+
 
 // Function décrémenter
 /* export const decrementPatriesNumber = async(elem) => {
