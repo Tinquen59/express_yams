@@ -32,6 +32,7 @@
             <% } %>
         </div>
 
+        <!-- Button Play -->
         <% if (infoGame.canPlay) { %>
             <button class="btn mt-5 btn--play" type="button">
                 <a href="/play">Play</a>
@@ -41,6 +42,18 @@
                 <a href="/">Play</a>
             </button>
         <% } %>
+
+        <!-- Bandeau message Win/Loose -->
+        <div class="my-5">
+            <p><%= combinationName %></p>
+            <p><%= message %></p>
+
+            <div>
+                <% patries.forEach(patry => { %>
+                    <p class=""><%= patry.name %></p>
+                <% }) %>
+            </div>
+        </div>
     </div>
     
 </body>
