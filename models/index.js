@@ -1,5 +1,6 @@
 "use strict";
 
+import e from "express";
 import { run } from "../connect";
 
 // all() est une promesse
@@ -42,3 +43,16 @@ export const decreaseNumber = async(id, numInc = -1) => {
         }
     )
 }
+
+// Push les patries dans la collection result
+export const addResultPatries = async(elem) => {
+    const collection = await run("results");
+    const {message} = elem;
+    const resultData =  {
+        "patriesName": message.namePatries.map(el => el.name),
+        "date": message.date,
+        "isWin": elem.message.namePatries.length ? true : false
+    }
+    
+    return collection.insertOne( resultData );
+} 

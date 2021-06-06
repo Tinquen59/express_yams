@@ -1,4 +1,4 @@
-import { winPatries, decreaseNumber } from './models/index';
+import { winPatries, decreaseNumber, addResultPatries } from './models/index';
 
 export const canPlay = (collection) => {
     for (const element of collection) {
@@ -16,7 +16,8 @@ const resultCombination = async setArr => {
         combinationName: "",
         message: "",
         numPatriesWin: 0,
-        namePatries: []
+        namePatries: [],
+        date: new Date()
     };
 
     const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
@@ -92,6 +93,8 @@ export const play = async () => {
         }
         return resultYams;
     });
-    
+
+    await addResultPatries(resultAll);
+        
     return resultAll;
 }
