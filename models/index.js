@@ -25,15 +25,20 @@ export const winPatries = async (num) => {
     const collection = await run("patries");
 
     return collection.aggregate([
+        { $match: { number: { $gt: 0 } } },
         { $sample: { size: num}}
     ]);
 }
 
 
-
 // Function décrémenter
-/* export const decrementPatriesNumber = async(elem) => {
+export const decreaseNumber = async(id, numInc = -1) => {
     const collection = await run("patries");
 
-    return collection.updateOne({elem}, {})
-} */
+    return collection.updateOne(
+        { _id: id },
+        {
+            $inc: { number: numInc }
+        }
+    )
+}

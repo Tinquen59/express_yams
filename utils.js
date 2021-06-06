@@ -1,4 +1,4 @@
-import { winPatries } from './models/index';
+import { winPatries, decreaseNumber } from './models/index';
 
 export const canPlay = (collection) => {
     for (const element of collection) {
@@ -63,6 +63,10 @@ const resultCombination = async setArr => {
 
         const returnPatries = await winPatries(message.numPatriesWin);
         await returnPatries.forEach(doc => message.numPatriesWin > 0 ? message.namePatries.push(doc) : []);
+
+        for (const patry of message.namePatries) {
+            await decreaseNumber(patry._id);
+        }
 
         return message;
     } else {
